@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VocGuide — Interactive Prototype Walkthrough & Typed Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090e17;
+      --card-bg: #0f172a;
+      --card-border: #1e293b;
+      --accent-orange: #ea580c;
+      --accent-orange-hover: #c2410c;
+      --accent-blue: #2563eb;
+      --accent-green: #16a34a;
+      --text-main: #f8fafc;
+      --text-sub: #94a3b8;
+      --text-dim: #64748b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    /* Control Toolbar */
+    .demo-bar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--card-border);
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .demo-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .demo-badge {
+      background: #1e3a8a;
+      color: #93c5fd;
+      border: 1px solid #3b82f6;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 12px;
+    }
+    .demo-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .btn-step {
+      background: #1e293b;
+      border: 1px solid #334155;
+      color: var(--text-sub);
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-step:hover, .btn-step.active {
+      background: var(--accent-orange);
+      color: #fff;
+      border-color: var(--accent-orange);
+    }
+    .btn-action {
+      background: var(--accent-blue);
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 13px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-action:hover { background: #1d4ed8; }
+
+    /* Stage Viewer */
+    .walkthrough-stage {
+      max-width: 1200px;
+      margin: 24px auto;
+      padding: 0 20px;
+      width: 100%;
+      flex: 1;
+    }
+    .stage-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      position: relative;
+      overflow: hidden;
+      min-height: 580px;
+    }
+    .stage-header {
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 16px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .stage-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .stage-badge {
+      font-size: 12px;
+      font-weight: 700;
+      background: rgba(234, 88, 12, 0.15);
+      color: #fb923c;
+      padding: 4px 10px;
+      border-radius: 20px;
+      border: 1px solid rgba(234, 88, 12, 0.4);
+    }
+
+    /* Simulation Elements */
+    .sim-form-group {
+      margin-bottom: 16px;
+    }
+    .sim-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-sub);
+      margin-bottom: 6px;
+    }
+    .sim-input {
+      width: 100%;
+      background: #090e17;
+      border: 1px solid #334155;
+      padding: 10px 14px;
+      border-radius: 6px;
+      color: #fff;
+      font-size: 14px;
+      outline: none;
+    }
+    .sim-input.focus {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+    }
+
+    /* Chat Simulation */
+    .chat-box {
+      background: #090e17;
+      border: 1px solid #1e293b;
+      border-radius: 10px;
+      padding: 20px;
+      height: 380px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+    .msg-bubble {
+      max-width: 80%;
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .msg-user {
+      align-self: flex-end;
+      background: #1e3a8a;
+      color: #eff6ff;
+      border-bottom-right-radius: 2px;
+    }
+    .msg-bot {
+      align-self: flex-start;
+      background: #1e293b;
+      color: #f1f5f9;
+      border: 1px solid #334155;
+      border-bottom-left-radius: 2px;
+    }
+    .role-header {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .sentiment-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 12px;
+      margin-top: 6px;
+    }
+    .sentiment-positive { background: #14532d; color: #86efac; border: 1px solid #22c55e; }
+    
+    .cursor-blink {
+      display: inline-block;
+      width: 2px;
+      height: 14px;
+      background: #3b82f6;
+      animation: blink 0.8s infinite;
+      vertical-align: middle;
+      margin-left: 2px;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    /* Trades Grid Simulation */
+    .trades-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .trade-card {
+      background: #090e17;
+      border: 1px solid #1e293b;
+      border-radius: 8px;
+      padding: 16px;
+      transition: all 0.2s;
+    }
+    .trade-card.highlight {
+      border-color: var(--accent-orange);
+      box-shadow: 0 0 15px rgba(234, 88, 12, 0.3);
+    }
+    .trade-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: #1e293b;
+      color: #94a3b8;
+      margin-bottom: 8px;
+    }
+    .trade-stat {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px solid #1e293b;
+    }
+
+    /* Admin Dashboard Simulation */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+    .stat-box {
+      background: #090e17;
+      border: 1px solid #1e293b;
+      padding: 16px;
+      border-radius: 8px;
+    }
+    .stat-val { font-size: 26px; font-weight: 800; color: #fff; margin: 4px 0; }
+    .stat-lbl { font-size: 12px; color: var(--text-sub); }
+
+    .narration-box {
+      background: #1e293b;
+      border-left: 4px solid var(--accent-orange);
+      padding: 12px 18px;
+      border-radius: 0 8px 8px 0;
+      margin-top: 20px;
+      font-size: 13px;
+      color: #cbd5e1;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Controls -->
+  <div class="demo-bar">
+    <div class="demo-brand">
+      <span style="font-size:20px;">🎓</span>
+      <strong>VocGuide</strong>
+      <span class="demo-badge">Typed Text Demo Mode</span>
+    </div>
+
+    <div class="demo-controls">
+      <button class="btn-step active" onclick="jumpToStep(1)">1. Sign In</button>
+      <button class="btn-step" onclick="jumpToStep(2)">2. Home Portal</button>
+      <button class="btn-step" onclick="jumpToStep(3)">3. Trade Catalog</button>
+      <button class="btn-step" onclick="jumpToStep(4)">4. Family Setup</button>
+      <button class="btn-step" onclick="jumpToStep(5)">5. Typed Chat</button>
+      <button class="btn-step" onclick="jumpToStep(6)">6. Hindi Translation</button>
+      <button class="btn-step" onclick="jumpToStep(7)">7. Admin Dashboard</button>
+      <button class="btn-action" id="playBtn" onclick="toggleAutoPlay()">▶ Auto-Play Tour</button>
+    </div>
+  </div>
+
+  <!-- Stage Container -->
+  <div class="walkthrough-stage">
+    <div class="stage-card" id="stageContent">
+      <!-- Dynamic Content Loaded by JS -->
+    </div>
+  </div>
+
+  <script>
+    let currentStep = 1;
+    let autoPlayTimer = null;
+    let isPlaying = false;
+
+    const steps = [
+      {
+        id: 1,
+        title: "Step 1: Administrator & User Authentication",
+        badge: "Security & Role Access",
+        render: () => `
+          <div class="stage-header">
+            <div class="stage-title"><span>🔐</span> Role-Based Login & Security Access</div>
+            <span class="stage-badge">Authentication Module</span>
+          </div>
+          <div style="max-width: 420px; margin: 40px auto; background: #090e17; padding: 24px; border-radius: 10px; border: 1px solid #1e293b;">
+            <h3 style="margin-bottom: 6px; font-size: 18px;">Sign In to VocGuide</h3>
+            <p style="font-size: 12px; color: #94a3b8; margin-bottom: 20px;">Access family guidance counseling or scheme administration</p>
+            
+            <div class="sim-form-group">
+              <label class="sim-label">Username</label>
+              <input class="sim-input focus" id="sim-user" value="" placeholder="Enter username">
+            </div>
+            <div class="sim-form-group">
+              <label class="sim-label">Password</label>
+              <input class="sim-input" type="password" id="sim-pass" value="" placeholder="••••••••">
+            </div>
+            <button class="btn-action" style="width: 100%; justify-content: center; margin-top: 10px;" id="sim-login-btn">Sign In as Admin</button>
+            <div id="login-feedback" style="margin-top: 12px; font-size: 12px; text-align: center; color: #22c55e; display: none;">
+              ✓ Authenticated: Logged in as VocGuide Administrator
+            </div>
+          </div>
+          <div class="narration-box">
+            <strong>Demonstration Focus:</strong> Shows zero-barrier authentication with encrypted SQLite credentials. Administrators gain access to parental resistance telemetry, while families can converse without forced barriers.
+          </div>
+        `,
+        action: () => {
+          simulateTyping("sim-user", "admin", 70, () => {
+            simulateTyping("sim-pass", "admin123", 70, () => {
+              document.getElementById("login-feedback").style.display = "block";
+              document.getElementById("sim-login-btn").style.background = "#16a34a";
+            });
+          });
+        }
+      },
+      {
+        id: 2,
+        title: "Step 2: Homepage & Dual-Role Citizen Services",
+        badge: "Family-Centric UI",
+        render: () => `
+          <div class="stage-header">
+            <div class="stage-title"><span>🏠</span> Welcome to VocGuide: Empowering Families</div>
+            <span class="stage-badge">Verified Outcomes</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 24px;">
+            <div>
+              <div style="background: rgba(234,88,12,0.1); border-left: 3px solid #ea580c; padding: 16px; border-radius: 6px; margin-bottom: 20px;">
+                <h2 style="font-size: 24px; color: #fff; margin-bottom: 8px;">Your Family's Guide to Vocational & Industry Success</h2>
+                <p style="color: #94a3b8; font-size: 14px;">Joint decision support addressing student career dreams and parental safety & dignity concerns.</p>
+              </div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+                <div class="stat-box">
+                  <div class="stat-lbl">Verified Placement Rate</div>
+                  <div class="stat-val" style="color: #22c55e;">93%</div>
+                  <div style="font-size: 11px; color: #64748b;">Across top 8 ITI Trades</div>
+                </div>
+                <div class="stat-box">
+                  <div class="stat-lbl">Top Experienced Monthly Salary</div>
+                  <div class="stat-val" style="color: #38bdf8;">₹55,000+</div>
+                  <div style="font-size: 11px; color: #64748b;">NSQF Level 4-6 Certified</div>
+                </div>
+              </div>
+            </div>
+            <div style="background: #090e17; border: 1px solid #1e293b; border-radius: 8px; padding: 20px;">
+              <h4 style="font-size: 14px; margin-bottom: 12px; color: #f8fafc;">Citizen & Family Services</h4>
+              <ul style="font-size: 13px; color: #94a3b8; list-style: none; display: flex; flex-direction: column; gap: 10px;">
+                <li>👨‍👩‍👦 <strong>Joint Family Guidance:</strong> Neutral, fact-checked AI advisor</li>
+                <li>📊 <strong>NSQF Career Ladder:</strong> Clear promotion roadmap</li>
+                <li>🏛️ <strong>Government Schemes:</strong> PMKVY & NAPS stipend info</li>
+                <li>☎️ <strong>Certified Counsellor:</strong> 1-Click human escalation</li>
+              </ul>
+            </div>
+          </div>
+          <div class="narration-box">
+            <strong>Demonstration Focus:</strong> Establishes institutional credibility immediately by countering vocational stigma with verified government and industry wage benchmarks.
+          </div>
+        `,
+        action: () => {}
+      },
+      {
+        id: 3,
+        title: "Step 3: Verified NSQF Trade Explorer",
+        badge: "Transparent Benchmarks",
+        render: () => `
+          <div class="stage-header">
+            <div class="stage-title"><span>🧭</span> Explore Vocational Trades & Career Progression</div>
+            <span class="stage-badge">8 Verified Sectors</span>
+          </div>
+          <div class="trades-grid">
+            <div class="trade-card highlight">
+              <span class="trade-badge" style="background:#ea580c;color:#fff;">NSQF Level 4</span>
+              <h4 style="font-size:16px;">Electrician (Industrial & Grid)</h4>
+              <p style="font-size:12px; color:#94a3b8; margin:6px 0;">Heavy electrical, motor controls, solar PV wiring</p>
+              <div class="trade-stat">
+                <span style="color:#94a3b8;">Average Salary:</span>
+                <strong style="color:#22c55e;">₹28,000/mo</strong>
+              </div>
+              <div class="trade-stat">
+                <span style="color:#94a3b8;">Placement Rate:</span>
+                <strong style="color:#38bdf8;">87%</strong>
+              </div>
+              <button class="btn-step active" style="width:100%; margin-top:12px;">Counsel Me on This Trade -></button>
+            </div>
+            <div class="trade-card">
+              <span class="trade-badge">NSQF Level 4</span>
+              <h4 style="font-size:16px;">General Duty Assistant (Healthcare)</h4>
+              <p style="font-size:12px; color:#94a3b8; margin:6px 0;">Patient care, hospital logistics, emergency support</p>
+              <div class="trade-stat">
+                <span style="color:#94a3b8;">Average Salary:</span>
+                <strong style="color:#22c55e;">₹20,000/mo</strong>
+              </div>
+              <div class="trade-stat">
+                <span style="color:#94a3b8;">Placement Rate:</span>
+                <strong style="color:#38bdf8;">93%</strong>
+              </div>
+            </div>
+            <div class="trade-card">
+              <span class="trade-badge">NSQF Level 4</span>
+              <h4 style="font-size:16px;">Computer Operator & Programming</h4>
+              <p style="font-size:12px; color:#94a3b8; margin:6px 0;">Office automation, database management, IT operations</p>
+              <div class="trade-stat">
+                <span style="color:#94a3b8;">Average Salary:</span>
+                <strong style="color:#22c55e;">₹25,000/mo</strong>
+              </div>
+              <div class="trade-stat">
+                <span style="color:#94a3b8;">Placement Rate:</span>
+                <strong style="color:#38bdf8;">88%</strong>
+              </div>
+            </div>
+          </div>
+          <div class="narration-box">
+            <strong>Demonstration Focus:</strong> Allows families to browse verified trades with exact placement percentages, starting salaries, and job growth projections.
+          </div>
+        `,
+        action: () => {}
+      },
+      {
+        id: 4,
+        title: "Step 4: Joint Session Profile Setup",
+        badge: "Personalized Counseling",
+        render: () => `
+          <div class="stage-header">
+            <div class="stage-title"><span>📝</span> Personalized Family Session Intake</div>
+            <span class="stage-badge">Context Injection</span>
+          </div>
+          <div style="max-width: 600px; margin: 20px auto; background: #090e17; padding: 24px; border-radius: 10px; border: 1px solid #1e293b;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+              <div class="sim-form-group">
+                <label class="sim-label">Learner's Name</label>
+                <input class="sim-input" id="profile-name" value="">
+              </div>
+              <div class="sim-form-group">
+                <label class="sim-label">Location (District / State)</label>
+                <input class="sim-input" id="profile-loc" value="">
+              </div>
+            </div>
+            <div class="sim-form-group">
+              <label class="sim-label">Selected Trade of Interest</label>
+              <input class="sim-input" id="profile-trade" value="Electrician (NSQF Level 4)" readonly style="color: #ea580c; font-weight: 600;">
+            </div>
+            <div class="sim-form-group">
+              <label class="sim-label">Primary Parent / Family Concern</label>
+              <input class="sim-input" id="profile-concern" value="">
+            </div>
+            <button class="btn-action" style="width: 100%; justify-content: center; margin-top: 10px;" id="start-guidance-btn">Start Joint Guidance Session -></button>
+          </div>
+          <div class="narration-box">
+            <strong>Demonstration Focus:</strong> Captures both student aspirations and parent hesitation before chat begins, passing this context directly into the Ollama Llama 3.1 RAG prompt.
+          </div>
+        `,
+        action: () => {
+          simulateTyping("profile-name", "Rahul Sharma", 50, () => {
+            simulateTyping("profile-loc", "Gorakhpur, Uttar Pradesh", 50, () => {
+              simulateTyping("profile-concern", "Workplace Safety & Long-Term Dignity", 40, () => {
+                document.getElementById("start-guidance-btn").style.background = "#16a34a";
+              });
+            });
+          });
+        }
+      },
+      {
+        id: 5,
+        title: "Step 5: Typed Text Chat & Grounded AI Guidance",
+        badge: "Pure Text Conversation (No Voice)",
+        render: () => `
+          <div class="stage-header">
+            <div class="stage-title"><span>💬</span> Live Typed Conversation: Student & Parent Guidance</div>
+            <span class="stage-badge">Dual-Role Reasoning</span>
+          </div>
+          <div class="chat-box" id="demoChat">
+            <div class="msg-bubble msg-bot">
+              <div class="role-header" style="color: #ea580c;">🤖 VocGuide Family Advisor (AI)</div>
+              Namaste Rahul and family! Welcome to your joint career guidance session for the Electrician trade. What questions or concerns can I answer for you today?
+            </div>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <input class="sim-input" id="chat-input" placeholder="Type parent or student question here..." style="flex: 1;">
+            <button class="btn-action" id="send-btn">Send ↵</button>
+          </div>
+          <div class="narration-box">
+            <strong>Demonstration Focus:</strong> Purely text-based typed interaction. The AI provides two distinct perspective paragraphs: reassuring the parents regarding safety standards and wages, while motivating the student with certification ladders.
+          </div>
+        `,
+        action: () => {
+          const chatInput = document.getElementById("chat-input");
+          const chatBox = document.getElementById("demoChat");
+          const query = "Is electrician work safe for my child, and what will he earn in 3-5 years?";
+          
+          simulateTyping("chat-input", query, 45, () => {
+            // Append User message
+            const userMsg = document.createElement("div");
+            userMsg.className = "msg-bubble msg-user";
+            userMsg.innerHTML = `<div class="role-header" style="color: #93c5fd;">👨‍👩‍👦 Parent & Student (Typed)</div>${query}`;
+            chatBox.appendChild(userMsg);
+            chatInput.value = "";
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            // Simulate AI response after 1 second
+            setTimeout(() => {
+              const aiMsg = document.createElement("div");
+              aiMsg.className = "msg-bubble msg-bot";
+              aiMsg.innerHTML = `
+                <div class="role-header" style="color: #ea580c;">🤖 VocGuide Family Advisor (Llama 3.1 RAG)</div>
+                <p><strong>1. For Parents (Safety & Dignity Assurance):</strong><br>
+                Modern certified ITIs enforce strict factory safety standards including compulsory PPE (insulated 11kV gloves, arc-flash helmets, shock-proof footwear). In 3-5 years, licensed electricians earn <strong>₹28,000 to ₹55,000/month</strong>, with high community respect in solar power and industrial automation.</p>
+                <p style="margin-top: 8px;"><strong>2. For Rahul (Skill & Career Path):</strong><br>
+                You enter via NSQF Level 4 training with an <strong>87% verified placement rate</strong>. You can progress to Senior Electrical Supervisor, or start your own licensed electrical contracting enterprise.</p>
+                <span class="sentiment-tag sentiment-positive">● Sentiment: Positive (Low Resistance)</span>
+              `;
+              chatBox.appendChild(aiMsg);
+              chatBox.scrollTop = chatBox.scrollHeight;
+            }, 800);
+          });
+        }
+      },
+      {
+        id: 6,
+        title: "Step 6: Multilingual Regional Translation (Hindi)",
+        badge: "Bilingual Localization",
+        render: () => `
+          <div class="stage-header">
+            <div class="stage-title"><span>🌐</span> क्षेत्रीय भाषा समर्थन (Hindi Language Translation)</div>
+            <span class="stage-badge">TranslateGemma Model</span>
+          </div>
+          <div class="chat-box" id="demoChatHi">
+            <div class="msg-bubble msg-bot">
+              <div class="role-header" style="color: #ea580c;">🤖 वोकगाइड परिवार सलाहकार</div>
+              नमस्ते राहुल और परिवार! वोकगाइड पर आपका स्वागत है। इलेक्ट्रीशियन ट्रेड के बारे में आप क्या जानना चाहते हैं?
+            </div>
+            <div class="msg-bubble msg-user">
+              <div class="role-header" style="color: #93c5fd;">👨‍👩‍👦 अभिभावक (टाइप किया गया प्रश्न)</div>
+              क्या इस कोर्स के लिए सरकार कोई वजीफा या छात्रवृत्ति देती है?
+            </div>
+            <div class="msg-bubble msg-bot">
+              <div class="role-header" style="color: #ea580c;">🤖 वोकगाइड परिवार सलाहकार</div>
+              हाँ! भारत सरकार के कौशल विकास एवं उद्यमिता मंत्रालय (MSDE) के तहत कई प्रमुख योजनाएं उपलब्ध हैं:
+              <br><br>
+              • <strong>NAPS (राष्ट्रीय शिक्षुता संवर्धन योजना):</strong> ₹1,500 से ₹2,500 प्रतिमाह प्रत्यक्ष लाभ अंतरण (DBT स्टाइपेंड)।<br>
+              • <strong>PMKVY 4.0:</strong> निःशुल्क प्रशिक्षण और प्रमाणन के बाद सरकारी टूलकिट अनुदान।<br>
+              • <strong>राज्य आईटीआई छात्रवृत्ति:</strong> आर्थिक रूप से कमजोर वर्ग (EWS) के छात्रों के लिए निःशुल्क छात्रावास व भोजन सहायता।
+              <br><br>
+              <span class="sentiment-tag sentiment-positive">● भावना: सकारात्मक (शंका निवारण सफल)</span>
+            </div>
+          </div>
+          <div class="narration-box">
+            <strong>Demonstration Focus:</strong> Demonstrates that vernacular non-English speaking parents can type directly in Hindi script or regional language and receive culturally resonant, respectful guidance.
+          </div>
+        `,
+        action: () => {}
+      },
+      {
+        id: 7,
+        title: "Step 7: Scheme Administration & Parental Resistance Map",
+        badge: "Telemetry & Governance",
+        render: () => `
+          <div class="stage-header">
+            <div class="stage-title"><span>📊</span> Scheme Administration & Policy Telemetry</div>
+            <span class="stage-badge">Live Administrative Console</span>
+          </div>
+          <div class="stats-row">
+            <div class="stat-box">
+              <div class="stat-lbl">Total Family Sessions</div>
+              <div class="stat-val">14</div>
+              <div style="font-size:11px;color:#22c55e;">Active Learners: 14</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-lbl">Counseling Messages</div>
+              <div class="stat-val">96</div>
+              <div style="font-size:11px;color:#38bdf8;">Avg 6.9 msgs/session</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-lbl">Pending Escalations</div>
+              <div class="stat-val" style="color: #22c55e;">0</div>
+              <div style="font-size:11px;color:#64748b;">All callbacks resolved</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-lbl">Concerned Sentiment</div>
+              <div class="stat-val" style="color: #f59e0b;">10%</div>
+              <div style="font-size:11px;color:#22c55e;">90% positive/neutral</div>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div style="background: #090e17; border: 1px solid #1e293b; border-radius: 8px; padding: 16px;">
+              <h4 style="font-size: 13px; margin-bottom: 8px; color: #94a3b8;">Parental Concern Topic Breakdown</h4>
+              <div style="font-size: 13px; display: flex; flex-direction: column; gap: 6px;">
+                <div style="display:flex; justify-content:space-between;"><span>💼 Income & Growth:</span><strong>45%</strong></div>
+                <div style="display:flex; justify-content:space-between;"><span>🛡️ Workplace Safety:</span><strong>35%</strong></div>
+                <div style="display:flex; justify-content:space-between;"><span>🤝 Social Dignity / Stigma:</span><strong>20%</strong></div>
+              </div>
+            </div>
+            <div style="background: #090e17; border: 1px solid #1e293b; border-radius: 8px; padding: 16px;">
+              <h4 style="font-size: 13px; margin-bottom: 8px; color: #94a3b8;">Human Counsellor Escalation Bridge</h4>
+              <p style="font-size: 12px; color: #cbd5e1; margin-bottom: 10px;">When high resistance is detected, the AI generates a pre-filled case brief for DGT certified counsellors.</p>
+              <button class="btn-step active" style="font-size: 11px;">View Escalation Callback Queue -></button>
+            </div>
+          </div>
+          <div class="narration-box">
+            <strong>Demonstration Focus:</strong> Closes the loop for SIH evaluators by proving how MSDE/DGT directors can identify specific resistance hot-spots geographically and target skilling awareness campaigns effectively.
+          </div>
+        `,
+        action: () => {}
+      }
+    ];
+
+    function renderStep(idx) {
+      currentStep = idx;
+      const step = steps.find(s => s.id === idx);
+      if (!step) return;
+
+      document.querySelectorAll(".btn-step").forEach((b, i) => {
+        b.classList.toggle("active", i + 1 === idx);
+      });
+
+      const container = document.getElementById("stageContent");
+      container.innerHTML = step.render();
+      step.action();
+    }
+
+    function jumpToStep(idx) {
+      if (isPlaying) toggleAutoPlay();
+      renderStep(idx);
+    }
+
+    function simulateTyping(elementId, text, speed, callback) {
+      const el = document.getElementById(elementId);
+      if (!el) return;
+      el.value = "";
+      let i = 0;
+      const timer = setInterval(() => {
+        if (i < text.length) {
+          el.value += text.charAt(i);
+          i++;
+        } else {
+          clearInterval(timer);
+          if (callback) callback();
+        }
+      }, speed);
+    }
+
+    function toggleAutoPlay() {
+      const btn = document.getElementById("playBtn");
+      if (isPlaying) {
+        clearInterval(autoPlayTimer);
+        isPlaying = false;
+        btn.innerHTML = "▶ Auto-Play Tour";
+        btn.style.background = "#2563eb";
+      } else {
+        isPlaying = true;
+        btn.innerHTML = "⏸ Pause Tour";
+        btn.style.background = "#ea580c";
+        autoPlayTimer = setInterval(() => {
+          let next = currentStep + 1;
+          if (next > steps.length) next = 1;
+          renderStep(next);
+        }, 5500);
+      }
+    }
+
+    // Initialize first step
+    renderStep(1);
+  </script>
+</body>
+</html>

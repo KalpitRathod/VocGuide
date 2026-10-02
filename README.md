@@ -11,6 +11,16 @@ An AI-enabled career counselling platform for vocational education in India, des
 
 ---
 
+## 🎥 Prototype Video Walkthrough (Typed Text Demonstration)
+
+> **End-to-End Walkthrough:** Complete demonstration showing the platform flow from role-based login, NSQF trade filtering, family intake setup, pure typed-text AI family counselling with dual-role grounding, regional Hindi localization, to the administrative telemetry console.
+
+![VocGuide Prototype Video Walkthrough](presentation_assets/prototype_walkthrough_demo.webp)
+
+> 💡 **Interactive Self-Running Demo:** You can open [`http://localhost:5000/walkthrough.html`](http://localhost:5000/walkthrough.html) in your browser for an automated interactive tour with simulated keystroke typing.
+
+---
+
 ## 📸 Platform Screenshots
 
 ### 1. 🏠 Homepage & Citizen Family Services
