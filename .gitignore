@@ -1,0 +1,51 @@
+# Offline Whisper Model Binaries & Assets (>100MB)
+Whisper Model/
+[Ww]hisper [Mm]odel/
+
+# AI4Bharat Indic-TTS Neural Weights & Cloned Repositories (>100MB)
+IndicTTS/
+models/
+TTS/
+Trainer/
+*.pth
+*.bin
+*.pt
+*.onnx
+*.safetensors
+*.zip
+*.tar
+*.tar.gz
+
+# Runtime Audio Cache, Memory Vector Store & Scratch
+audio_cache/
+memory_db/
+scratch/
+scratch_crops/
+
+# SQLite Database & Runtime Logs
+*.db
+*.db-journal
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+
+# Temporary audio files
+*.wav
+*.mp3
+*.webm
+*.ogg
+
+# Office lock files & OS / IDE files
+~$*
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

@@ -1,0 +1,725 @@
+{
+  "trades": [
+    {
+      "id": "electrician",
+      "name": "Electrician",
+      "name_hi": "इलेक्ट्रीशियन",
+      "nsqf_level": 3,
+      "duration_months": 12,
+      "sector": "Construction & Real Estate",
+      "sector_hi": "निर्माण और रियल एस्टेट",
+      "description": "Install, maintain, and repair electrical systems in homes, factories, and commercial buildings.",
+      "description_hi": "घरों, कारखानों और व्यावसायिक इमारतों में विद्युत प्रणालियों को स्थापित करना, बनाए रखना और मरम्मत करना।",
+      "avg_starting_salary": 12000,
+      "avg_experienced_salary": 28000,
+      "top_salary": 55000,
+      "placement_rate": 87,
+      "job_growth_percent": 18,
+      "top_employers": [
+        "L&T",
+        "Tata Projects",
+        "Adani Electricity",
+        "Municipal Corporations",
+        "Self Employment"
+      ],
+      "career_progression": [
+        {
+          "level": "NSQF 3",
+          "role": "Junior Electrician",
+          "years": "0-2",
+          "salary": "10,000-15,000"
+        },
+        {
+          "level": "NSQF 4",
+          "role": "Senior Electrician",
+          "years": "2-5",
+          "salary": "18,000-28,000"
+        },
+        {
+          "level": "NSQF 5",
+          "role": "Electrical Supervisor",
+          "years": "5-8",
+          "salary": "30,000-45,000"
+        },
+        {
+          "level": "NSQF 6",
+          "role": "Electrical Contractor / Engineer",
+          "years": "8+",
+          "salary": "50,000+"
+        }
+      ],
+      "self_employment_potential": "High",
+      "self_employment_potential_hi": "उच्च",
+      "safety_rating": "Medium",
+      "social_perception": "Good",
+      "social_perception_hi": "अच्छी",
+      "states_high_demand": [
+        "Maharashtra",
+        "Gujarat",
+        "Uttar Pradesh",
+        "Karnataka",
+        "Tamil Nadu"
+      ],
+      "gender_diversity": {
+        "male": 92,
+        "female": 8
+      },
+      "certifications": [
+        "ITI Certificate",
+        "NSQF Level 3-5",
+        "AEEE License"
+      ],
+      "parental_concerns_addressed": {
+        "income": "Electricians earn ₹10,000-₹55,000/month with high self-employment potential",
+        "safety": "Standard safety gear and training protocols ensure safe work practices",
+        "social_status": "Electricians are highly respected in communities as essential service providers",
+        "growth": "NSQF pathway allows progression to Electrical Supervisor and Contractor roles",
+        "female_safety": "Growing opportunities in domestic and commercial sectors with safe indoor environments"
+      }
+    },
+    {
+      "id": "plumber",
+      "name": "Plumber",
+      "name_hi": "प्लम्बर",
+      "nsqf_level": 3,
+      "duration_months": 12,
+      "sector": "Construction & Real Estate",
+      "sector_hi": "निर्माण और रियल एस्टेट",
+      "description": "Install and repair pipes, fittings, and fixtures for water supply and sanitation systems.",
+      "description_hi": "जल आपूर्ति और स्वच्छता प्रणालियों के लिए पाइप, फिटिंग और जुड़नार स्थापित करना और मरम्मत करना।",
+      "avg_starting_salary": 10000,
+      "avg_experienced_salary": 22000,
+      "top_salary": 45000,
+      "placement_rate": 82,
+      "job_growth_percent": 22,
+      "top_employers": [
+        "Municipal Corporations",
+        "Construction Companies",
+        "Hotels",
+        "Hospitals",
+        "Self Employment"
+      ],
+      "career_progression": [
+        {
+          "level": "NSQF 3",
+          "role": "Junior Plumber",
+          "years": "0-2",
+          "salary": "8,000-12,000"
+        },
+        {
+          "level": "NSQF 4",
+          "role": "Senior Plumber",
+          "years": "2-5",
+          "salary": "15,000-22,000"
+        },
+        {
+          "level": "NSQF 5",
+          "role": "Plumbing Supervisor",
+          "years": "5-8",
+          "salary": "25,000-38,000"
+        },
+        {
+          "level": "NSQF 6",
+          "role": "Plumbing Contractor",
+          "years": "8+",
+          "salary": "40,000+"
+        }
+      ],
+      "self_employment_potential": "Very High",
+      "self_employment_potential_hi": "बहुत उच्च",
+      "safety_rating": "Low",
+      "social_perception": "Good",
+      "social_perception_hi": "अच्छी",
+      "states_high_demand": [
+        "Maharashtra",
+        "Delhi",
+        "Rajasthan",
+        "Madhya Pradesh",
+        "West Bengal"
+      ],
+      "gender_diversity": {
+        "male": 95,
+        "female": 5
+      },
+      "certifications": [
+        "ITI Certificate",
+        "NSQF Level 3-5"
+      ],
+      "parental_concerns_addressed": {
+        "income": "Plumbers earn ₹8,000-₹45,000/month with very high self-employment potential in urban areas",
+        "safety": "Indoor work with standard safety protocols; low physical risk",
+        "social_status": "Critical infrastructure trade with high community respect and consistent demand",
+        "growth": "Smart water management and green building sector creating new opportunities",
+        "female_safety": "Growing demand for female plumbers in household sector"
+      }
+    },
+    {
+      "id": "beauty_wellness",
+      "name": "Beauty & Wellness Technician",
+      "name_hi": "ब्यूटी और वेलनेस तकनीशियन",
+      "nsqf_level": 3,
+      "duration_months": 6,
+      "sector": "Beauty & Wellness",
+      "sector_hi": "सौंदर्य और स्वास्थ्य",
+      "description": "Provide beauty and wellness services including hair care, skin care, and grooming.",
+      "description_hi": "बाल देखभाल, त्वचा देखभाल और सौंदर्य सेवाएं प्रदान करना।",
+      "avg_starting_salary": 8000,
+      "avg_experienced_salary": 20000,
+      "top_salary": 60000,
+      "placement_rate": 91,
+      "job_growth_percent": 30,
+      "top_employers": [
+        "Lakme Salons",
+        "VLCC",
+        "Naturals",
+        "Boutique Salons",
+        "Self Employment"
+      ],
+      "career_progression": [
+        {
+          "level": "NSQF 3",
+          "role": "Beauty Assistant",
+          "years": "0-1",
+          "salary": "6,000-10,000"
+        },
+        {
+          "level": "NSQF 4",
+          "role": "Beauty Technician",
+          "years": "1-3",
+          "salary": "12,000-20,000"
+        },
+        {
+          "level": "NSQF 5",
+          "role": "Senior Beautician / Trainer",
+          "years": "3-6",
+          "salary": "22,000-40,000"
+        },
+        {
+          "level": "NSQF 6",
+          "role": "Salon Owner / Franchise",
+          "years": "6+",
+          "salary": "50,000+"
+        }
+      ],
+      "self_employment_potential": "Very High",
+      "self_employment_potential_hi": "बहुत उच्च",
+      "safety_rating": "Very Low",
+      "social_perception": "Good",
+      "social_perception_hi": "अच्छी",
+      "states_high_demand": [
+        "Maharashtra",
+        "Delhi",
+        "Karnataka",
+        "Tamil Nadu",
+        "Punjab"
+      ],
+      "gender_diversity": {
+        "male": 20,
+        "female": 80
+      },
+      "certifications": [
+        "NSQF Level 3-5",
+        "VLCC Certification",
+        "Wella Certification"
+      ],
+      "parental_concerns_addressed": {
+        "income": "Beauty professionals earn ₹6,000-₹60,000/month with very high salon ownership potential",
+        "safety": "Completely safe indoor work environment; no heavy machinery or outdoor risk",
+        "social_status": "Growing industry with celebrity associations; respectable profession",
+        "growth": "₹90,000 crore industry growing at 30% per year; massive demand post-COVID",
+        "female_safety": "Predominantly female workforce with safe, professional indoor work environment"
+      }
+    },
+    {
+      "id": "computer_operator",
+      "name": "Computer Operator & Programming Assistant",
+      "name_hi": "कंप्यूटर ऑपरेटर और प्रोग्रामिंग असिस्टेंट",
+      "nsqf_level": 4,
+      "duration_months": 12,
+      "sector": "Information Technology",
+      "sector_hi": "सूचना प्रौद्योगिकी",
+      "description": "Data entry, computer operations, basic programming, and office automation tasks.",
+      "description_hi": "डेटा एंट्री, कंप्यूटर ऑपरेशन, बुनियादी प्रोग्रामिंग और ऑफिस ऑटोमेशन कार्य।",
+      "avg_starting_salary": 10000,
+      "avg_experienced_salary": 25000,
+      "top_salary": 70000,
+      "placement_rate": 88,
+      "job_growth_percent": 25,
+      "top_employers": [
+        "BPO Companies",
+        "Banks",
+        "Government Offices",
+        "MNCs",
+        "Startups"
+      ],
+      "career_progression": [
+        {
+          "level": "NSQF 4",
+          "role": "Data Entry Operator",
+          "years": "0-2",
+          "salary": "8,000-12,000"
+        },
+        {
+          "level": "NSQF 5",
+          "role": "IT Support / Junior Developer",
+          "years": "2-4",
+          "salary": "15,000-25,000"
+        },
+        {
+          "level": "NSQF 6",
+          "role": "Systems Administrator / Developer",
+          "years": "4-7",
+          "salary": "28,000-50,000"
+        },
+        {
+          "level": "B.Tech/MCA",
+          "role": "Senior Developer / IT Manager",
+          "years": "7+",
+          "salary": "60,000+"
+        }
+      ],
+      "self_employment_potential": "High",
+      "self_employment_potential_hi": "उच्च",
+      "safety_rating": "Very Low",
+      "social_perception": "Excellent",
+      "social_perception_hi": "उत्कृष्ट",
+      "states_high_demand": [
+        "All States",
+        "Karnataka",
+        "Telangana",
+        "Maharashtra",
+        "Delhi NCR"
+      ],
+      "gender_diversity": {
+        "male": 55,
+        "female": 45
+      },
+      "certifications": [
+        "COPA ITI",
+        "NSQF Level 4-6",
+        "Microsoft Certification",
+        "Google IT Certification"
+      ],
+      "parental_concerns_addressed": {
+        "income": "IT sector offers ₹8,000-₹70,000/month with fastest salary growth of any sector",
+        "safety": "100% safe air-conditioned office environment",
+        "social_status": "IT professionals are highly respected; considered equivalent to degree holders in terms of status",
+        "growth": "India's IT sector employs 5+ million; massive government digital push creating new roles",
+        "female_safety": "Safe office environment with 45% female workforce; best sector for women's safety and growth"
+      }
+    },
+    {
+      "id": "welder",
+      "name": "Welder",
+      "name_hi": "वेल्डर",
+      "nsqf_level": 3,
+      "duration_months": 12,
+      "sector": "Manufacturing",
+      "sector_hi": "विनिर्माण",
+      "description": "Join metal parts using welding equipment in manufacturing, construction and automotive sectors.",
+      "description_hi": "विनिर्माण, निर्माण और ऑटोमोटिव क्षेत्रों में वेल्डिंग उपकरण का उपयोग करके धातु के हिस्सों को जोड़ना।",
+      "avg_starting_salary": 11000,
+      "avg_experienced_salary": 25000,
+      "top_salary": 50000,
+      "placement_rate": 84,
+      "job_growth_percent": 15,
+      "top_employers": [
+        "Tata Steel",
+        "Mahindra",
+        "BHEL",
+        "L&T",
+        "Shipyards"
+      ],
+      "career_progression": [
+        {
+          "level": "NSQF 3",
+          "role": "Junior Welder",
+          "years": "0-2",
+          "salary": "9,000-13,000"
+        },
+        {
+          "level": "NSQF 4",
+          "role": "Senior Welder",
+          "years": "2-5",
+          "salary": "16,000-25,000"
+        },
+        {
+          "level": "NSQF 5",
+          "role": "Welding Inspector",
+          "years": "5-8",
+          "salary": "28,000-40,000"
+        },
+        {
+          "level": "NSQF 6",
+          "role": "Welding Engineer / Trainer",
+          "years": "8+",
+          "salary": "45,000+"
+        }
+      ],
+      "self_employment_potential": "High",
+      "self_employment_potential_hi": "उच्च",
+      "safety_rating": "Medium",
+      "social_perception": "Good",
+      "social_perception_hi": "अच्छी",
+      "states_high_demand": [
+        "Gujarat",
+        "Maharashtra",
+        "Tamil Nadu",
+        "Jharkhand",
+        "Odisha"
+      ],
+      "gender_diversity": {
+        "male": 97,
+        "female": 3
+      },
+      "certifications": [
+        "ITI Certificate",
+        "NSQF Level 3-5",
+        "AWS Certification",
+        "ASME Certification"
+      ],
+      "parental_concerns_addressed": {
+        "income": "Welders earn ₹9,000-₹50,000/month; certified welders can work in Gulf countries earning ₹60,000-₹1,20,000/month",
+        "safety": "Full protective gear provided; modern welding is safer than traditional methods",
+        "social_status": "Core manufacturing skill with strong respect in industrial communities",
+        "growth": "PLI scheme boosting Indian manufacturing; massive demand from defense and infrastructure",
+        "female_safety": "Growing opportunities in precision welding and quality control roles for women"
+      }
+    },
+    {
+      "id": "healthcare_assistant",
+      "name": "General Duty Assistant (Healthcare)",
+      "name_hi": "जनरल ड्यूटी असिस्टेंट (स्वास्थ्य सेवा)",
+      "nsqf_level": 4,
+      "duration_months": 6,
+      "sector": "Healthcare",
+      "sector_hi": "स्वास्थ्य सेवा",
+      "description": "Provide basic patient care, assist medical staff, and support hospital operations.",
+      "description_hi": "बुनियादी रोगी देखभाल प्रदान करना, चिकित्सा कर्मियों की सहायता करना और अस्पताल संचालन में सहायता करना।",
+      "avg_starting_salary": 9000,
+      "avg_experienced_salary": 20000,
+      "top_salary": 40000,
+      "placement_rate": 93,
+      "job_growth_percent": 28,
+      "top_employers": [
+        "Apollo Hospitals",
+        "Fortis",
+        "AIIMS",
+        "District Hospitals",
+        "PHCs"
+      ],
+      "career_progression": [
+        {
+          "level": "NSQF 4",
+          "role": "General Duty Assistant",
+          "years": "0-2",
+          "salary": "8,000-12,000"
+        },
+        {
+          "level": "NSQF 5",
+          "role": "Senior Healthcare Assistant",
+          "years": "2-4",
+          "salary": "14,000-20,000"
+        },
+        {
+          "level": "Diploma",
+          "role": "ANM / GNM Nurse",
+          "years": "4-7",
+          "salary": "18,000-35,000"
+        },
+        {
+          "level": "B.Sc Nursing",
+          "role": "Registered Nurse / Supervisor",
+          "years": "7+",
+          "salary": "35,000+"
+        }
+      ],
+      "self_employment_potential": "Medium",
+      "self_employment_potential_hi": "मध्यम",
+      "safety_rating": "Low",
+      "social_perception": "Excellent",
+      "social_perception_hi": "उत्कृष्ट",
+      "states_high_demand": [
+        "All States",
+        "Kerala",
+        "Tamil Nadu",
+        "Maharashtra",
+        "Delhi"
+      ],
+      "gender_diversity": {
+        "male": 30,
+        "female": 70
+      },
+      "certifications": [
+        "NSQF Level 4-5",
+        "AHSAS Certification",
+        "BLS Certificate"
+      ],
+      "parental_concerns_addressed": {
+        "income": "Healthcare workers earn ₹8,000-₹40,000/month; overseas opportunities in Gulf and Europe pay ₹80,000-₹2,00,000/month",
+        "safety": "Safe, dignified work in hospitals with clear protocols and protective equipment",
+        "social_status": "Healthcare is among the most respected professions in Indian society",
+        "growth": "Ayushman Bharat and health infrastructure expansion creating millions of new jobs",
+        "female_safety": "70% female workforce; extremely safe working environment in regulated hospital settings"
+      }
+    },
+    {
+      "id": "sewing_technology",
+      "name": "Sewing Technology / Dress Making",
+      "name_hi": "सिलाई प्रौद्योगिकी / कपड़ा निर्माण",
+      "nsqf_level": 2,
+      "duration_months": 6,
+      "sector": "Apparel & Textiles",
+      "sector_hi": "परिधान और वस्त्र",
+      "description": "Sewing, stitching, embroidery, garment construction and textile operations.",
+      "description_hi": "सिलाई, कढ़ाई, परिधान निर्माण और वस्त्र संचालन।",
+      "avg_starting_salary": 7000,
+      "avg_experienced_salary": 18000,
+      "top_salary": 45000,
+      "placement_rate": 79,
+      "job_growth_percent": 12,
+      "top_employers": [
+        "Garment Factories",
+        "Boutiques",
+        "Export Houses",
+        "Self Employment",
+        "Online Platforms"
+      ],
+      "career_progression": [
+        {
+          "level": "NSQF 2",
+          "role": "Sewing Operator",
+          "years": "0-2",
+          "salary": "6,000-9,000"
+        },
+        {
+          "level": "NSQF 3",
+          "role": "Senior Tailor / Embroiderer",
+          "years": "2-4",
+          "salary": "10,000-18,000"
+        },
+        {
+          "level": "NSQF 4",
+          "role": "Pattern Maker / Fashion Designer",
+          "years": "4-7",
+          "salary": "20,000-35,000"
+        },
+        {
+          "level": "Diploma/Degree",
+          "role": "Fashion Designer / Boutique Owner",
+          "years": "7+",
+          "salary": "40,000+"
+        }
+      ],
+      "self_employment_potential": "Very High",
+      "self_employment_potential_hi": "बहुत उच्च",
+      "safety_rating": "Very Low",
+      "social_perception": "Good",
+      "social_perception_hi": "अच्छी",
+      "states_high_demand": [
+        "West Bengal",
+        "Gujarat",
+        "Maharashtra",
+        "Tamil Nadu",
+        "Uttar Pradesh"
+      ],
+      "gender_diversity": {
+        "male": 25,
+        "female": 75
+      },
+      "certifications": [
+        "NSQF Level 2-4",
+        "NIFT Diploma",
+        "Craft Council Certification"
+      ],
+      "parental_concerns_addressed": {
+        "income": "Skilled tailors/designers earn ₹6,000-₹45,000/month; boutique owners can earn ₹50,000+",
+        "safety": "Completely safe home-based work possible; ideal for women who prefer working from home",
+        "social_status": "Fashion design is trendy and respected; helps preserve traditional crafts",
+        "growth": "India's textile export target of $100 billion creating massive demand for skilled workers",
+        "female_safety": "Work from home possible; predominantly female-friendly trade with flexible hours"
+      }
+    },
+    {
+      "id": "automobile_service",
+      "name": "Automobile Service Technician",
+      "name_hi": "ऑटोमोबाइल सर्विस तकनीशियन",
+      "nsqf_level": 4,
+      "duration_months": 12,
+      "sector": "Automotive",
+      "sector_hi": "ऑटोमोटिव",
+      "description": "Service, diagnose, and repair automobiles including engines, brakes, and electrical systems.",
+      "description_hi": "इंजन, ब्रेक और विद्युत प्रणालियों सहित ऑटोमोबाइल की सर्विस, निदान और मरम्मत करना।",
+      "avg_starting_salary": 11000,
+      "avg_experienced_salary": 24000,
+      "top_salary": 55000,
+      "placement_rate": 86,
+      "job_growth_percent": 20,
+      "top_employers": [
+        "Maruti Suzuki Dealerships",
+        "Tata Motors",
+        "Hero MotoCorp",
+        "Multi-brand Service Centers",
+        "Self Employment"
+      ],
+      "career_progression": [
+        {
+          "level": "NSQF 4",
+          "role": "Auto Service Technician",
+          "years": "0-2",
+          "salary": "9,000-14,000"
+        },
+        {
+          "level": "NSQF 5",
+          "role": "Senior Technician / Diagnostics",
+          "years": "2-5",
+          "salary": "16,000-24,000"
+        },
+        {
+          "level": "NSQF 6",
+          "role": "Service Advisor / Supervisor",
+          "years": "5-8",
+          "salary": "25,000-40,000"
+        },
+        {
+          "level": "Diploma",
+          "role": "Workshop Manager / Own Garage",
+          "years": "8+",
+          "salary": "50,000+"
+        }
+      ],
+      "self_employment_potential": "Very High",
+      "self_employment_potential_hi": "बहुत उच्च",
+      "safety_rating": "Low",
+      "social_perception": "Good",
+      "social_perception_hi": "अच्छी",
+      "states_high_demand": [
+        "Maharashtra",
+        "Delhi NCR",
+        "Gujarat",
+        "Tamil Nadu",
+        "Karnataka"
+      ],
+      "gender_diversity": {
+        "male": 96,
+        "female": 4
+      },
+      "certifications": [
+        "ITI Certificate",
+        "NSQF Level 4-6",
+        "OEM Certifications (Maruti, Tata, Hero)"
+      ],
+      "parental_concerns_addressed": {
+        "income": "Auto technicians earn ₹9,000-₹55,000/month; EV revolution creating premium new roles",
+        "safety": "Modern garages with lifts and safety equipment; clean working conditions",
+        "social_status": "As cars become essential, auto technicians are highly valued professionals",
+        "growth": "Electric vehicle revolution creating massive demand for upskilled technicians",
+        "female_safety": "Service advisor and quality control roles ideal for women in the automotive sector"
+      }
+    }
+  ],
+  "training_providers": [
+    {
+      "id": "iti_001",
+      "name": "Government ITI Mumbai",
+      "state": "Maharashtra",
+      "district": "Mumbai",
+      "type": "Government",
+      "accreditation": "NCVT",
+      "rating": 4.2,
+      "placement_rate": 88,
+      "trades_offered": [
+        "electrician",
+        "plumber",
+        "welder",
+        "computer_operator"
+      ],
+      "annual_fees": 5000,
+      "scholarship_available": true,
+      "contact": "022-23456789"
+    },
+    {
+      "id": "pvt_001",
+      "name": "Aptech Vocational Institute",
+      "state": "Maharashtra",
+      "district": "Pune",
+      "type": "Private",
+      "accreditation": "NSDC",
+      "rating": 4.5,
+      "placement_rate": 92,
+      "trades_offered": [
+        "computer_operator",
+        "beauty_wellness",
+        "automobile_service"
+      ],
+      "annual_fees": 15000,
+      "scholarship_available": true,
+      "contact": "020-87654321"
+    },
+    {
+      "id": "iti_002",
+      "name": "Government ITI Lucknow",
+      "state": "Uttar Pradesh",
+      "district": "Lucknow",
+      "type": "Government",
+      "accreditation": "NCVT",
+      "rating": 4.0,
+      "placement_rate": 83,
+      "trades_offered": [
+        "electrician",
+        "welder",
+        "sewing_technology"
+      ],
+      "annual_fees": 3500,
+      "scholarship_available": true,
+      "contact": "0522-23456789"
+    },
+    {
+      "id": "ngo_001",
+      "name": "ILFS Skills Development Centre",
+      "state": "Delhi",
+      "district": "Delhi",
+      "type": "NGO",
+      "accreditation": "NSDC",
+      "rating": 4.3,
+      "placement_rate": 90,
+      "trades_offered": [
+        "healthcare_assistant",
+        "computer_operator",
+        "beauty_wellness"
+      ],
+      "annual_fees": 0,
+      "scholarship_available": true,
+      "contact": "011-23456789"
+    }
+  ],
+  "schemes": [
+    {
+      "id": "pmkvy",
+      "name": "Pradhan Mantri Kaushal Vikas Yojana (PMKVY)",
+      "name_hi": "प्रधानमंत्री कौशल विकास योजना",
+      "description": "Free skill training with certification and monetary rewards for completion",
+      "benefit": "Free training + ₹8,000 reward",
+      "eligibility": "Youth aged 15-45 years",
+      "website": "https://www.pmkvyofficial.org"
+    },
+    {
+      "id": "ddugky",
+      "name": "Deen Dayal Upadhyaya Grameen Kaushalya Yojana (DDU-GKY)",
+      "name_hi": "दीन दयाल उपाध्याय ग्रामीण कौशल्या योजना",
+      "description": "Skill training for rural youth with guaranteed job placement",
+      "benefit": "Free training + placement + stipend",
+      "eligibility": "Rural youth aged 15-35 years from poor families",
+      "website": "https://ddugky.gov.in"
+    },
+    {
+      "id": "naps",
+      "name": "National Apprenticeship Promotion Scheme (NAPS)",
+      "name_hi": "राष्ट्रीय अप्रेंटिसशिप संवर्धन योजना",
+      "description": "Learn while you earn through apprenticeship with top companies",
+      "benefit": "₹1,500-₹10,000/month stipend while training",
+      "eligibility": "Youth with ITI/Diploma qualification",
+      "website": "https://apprenticeshipindia.gov.in"
+    }
+  ]
+}

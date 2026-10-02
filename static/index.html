@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="VocGuide - AI-Enabled Career Counselling & Family Decision-Support Platform for Vocational Education. Smart India Hackathon 2026 Prototype (Problem Statement 26241).">
+  <title>VocGuide | AI Career Counselling & Family Decision-Support Platform (SIH 2026)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       1. MINIMAL UNIFIED SITE HEADER
+  ═══════════════════════════════════════════════════════════════ -->
+  <header class="site-header" id="site-header">
+    <div class="header-container">
+      <div class="header-left">
+        <a href="#home" class="brand-link" onclick="showSection('home')">
+          <div class="brand-logo-icon">
+            <svg viewBox="0 0 100 100" class="emblem-svg" width="34" height="34" aria-label="VocGuide Logo">
+              <circle cx="50" cy="50" r="46" fill="#002b49" stroke="#f37022" stroke-width="3"/>
+              <polygon points="50,22 80,35 50,48 20,35" fill="#f37022"/>
+              <polygon points="26,38 26,52 30,55 30,39.5" fill="#d4af37"/>
+              <polygon points="35,42 50,49 65,42 65,56 50,63 35,56" fill="#ffffff" opacity="0.95"/>
+              <circle cx="50" cy="74" r="5" fill="#d4af37"/>
+            </svg>
+          </div>
+          <div class="brand-text-box">
+            <span class="brand-title">VocGuide</span>
+            <span class="brand-sub">Career Guidance</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="navbar" id="navbar">
+        <button class="mobile-toggle" onclick="toggleMobileMenu()" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links" id="nav-links">
+          <a href="#home" class="nav-link active" onclick="showSection('home')">Home</a>
+          <a href="#trades" class="nav-link" onclick="showSection('trades')">Explore Trades</a>
+          <a href="#counsellor" class="nav-link" onclick="showSection('counsellor')">Career Guidance</a>
+          <a href="#admin" class="nav-link" onclick="showSection('admin')">Admin Portal</a>
+        </div>
+      </nav>
+
+      <!-- Right Header Actions -->
+      <div class="header-actions">
+        <!-- Minimal Language Pill -->
+        <div class="nav-lang">
+          <button class="lang-btn active" id="lang-en" onclick="setLanguage('en')">EN</button>
+          <button class="lang-btn" id="lang-hi" onclick="setLanguage('hi')">&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</button>
+        </div>
+
+        <!-- Hidden accessibility buttons for DOM compatibility -->
+        <div class="gov-accessibility" style="display:none">
+          <button class="font-btn" id="font-sm" onclick="setFontSize('sm')">A-</button>
+          <button class="font-btn active" id="font-md" onclick="setFontSize('md')">A</button>
+          <button class="font-btn" id="font-lg" onclick="setFontSize('lg')">A+</button>
+        </div>
+
+        <div id="user-chip" class="user-chip" style="display:none"></div>
+        <button class="header-login-btn" id="auth-login-btn" onclick="showAuthModal('login')">Sign In</button>
+
+        <button class="btn-header-cta" onclick="showSection('counsellor')">
+          <span id="nav-cta-text">Start Guidance</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       5. HOME SECTION (PSU Corporate Skilling Theme)
+  ═══════════════════════════════════════════════════════════════ -->
+  <section id="home" class="section active">
+
+    <!-- Hero Banner -->
+    <div class="psu-hero">
+      <div class="psu-hero-inner">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="badge-dot"></span>
+            <span id="badge-text">Trusted Guidance &bull; Hindi &amp; English &bull; For Families</span>
+          </div>
+          <h1 class="hero-title" id="hero-title">
+            Your Family's Guide to<br>
+            <span class="gradient-text">Vocational &amp; Industry Success</span>
+          </h1>
+          <p class="hero-subtitle" id="hero-subtitle">
+            A trusted vocational guidance platform for both students and parents, with verified facts on salaries, workplace safety, and career growth for every ITI &amp; NSQF trade.
+          </p>
+          <div class="hero-actions">
+            <button class="btn-psu-primary hero-btn" onclick="showSection('counsellor')" id="hero-cta-1">
+              Ask Career Questions
+            </button>
+            <button class="btn-psu-outline hero-btn" onclick="showSection('trades')" id="hero-cta-2">
+              Explore Verified Trades
+            </button>
+          </div>
+
+          <!-- Key Metrics Banner -->
+          <div class="hero-stats">
+            <div class="stat-item">
+              <div class="stat-num" id="stat-1-num">8+</div>
+              <div class="stat-label" id="stat-1">Verified ITI Trades</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <div class="stat-num" id="stat-2-num">93%</div>
+              <div class="stat-label" id="stat-2">Placement Rate</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <div class="stat-num" id="stat-3-num">2</div>
+              <div class="stat-label" id="stat-3">Languages (EN/&#2361;&#2367;)</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <div class="stat-num" id="stat-4-num">&#8377;55K</div>
+              <div class="stat-label" id="stat-4">Max Earnings/Month</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Hero Visual (PSU Industry Placement Showcase) -->
+        <div class="hero-visual">
+          <div class="psu-showcase-card">
+            <div class="psu-card-header">
+              <div>
+                <div class="psu-card-title">Verified Trade Placement</div>
+                <div class="psu-card-sub">Industrial &amp; Tech Sector Placement Data</div>
+              </div>
+              <span class="psu-live-tag">LIVE</span>
+            </div>
+            <div class="hero-card-stack">
+              <div class="hero-card card-1">
+                <div class="hc-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg></div>
+                <div class="hc-info">
+                  <div class="hc-title">Electrician (NSQF Level 4)</div>
+                  <div class="hc-salary">&#8377;28,000/mo avg &bull; Heavy Electrical &amp; Grid</div>
+                  <div class="hc-bar"><div class="hc-fill" style="width:87%"></div></div>
+                  <div class="hc-rate">87% placement rate</div>
+                </div>
+              </div>
+              <div class="hero-card card-2">
+                <div class="hc-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg></div>
+                <div class="hc-info">
+                  <div class="hc-title">CNC Operator / Machinist</div>
+                  <div class="hc-salary">&#8377;29,000/mo avg &bull; Precision Manufacturing</div>
+                  <div class="hc-bar"><div class="hc-fill" style="width:89%"></div></div>
+                  <div class="hc-rate">89% placement rate</div>
+                </div>
+              </div>
+              <div class="hero-card card-3">
+                <div class="hc-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></div>
+                <div class="hc-info">
+                  <div class="hc-title">Solar Tech / Green Energy</div>
+                  <div class="hc-salary">&#8377;26,000/mo avg &bull; Renewable Energy Sector</div>
+                  <div class="hc-bar"><div class="hc-fill" style="width:91%"></div></div>
+                  <div class="hc-rate">91% placement rate</div>
+                </div>
+              </div>
+            </div>
+            <div class="psu-card-footer">
+              <div class="recruiter-logos">
+                <span class="recruiter-pill">Manufacturing</span>
+                <span class="recruiter-pill">Automotive</span>
+                <span class="recruiter-pill">Electrical</span>
+                <span class="recruiter-pill">Renewables</span>
+                <span class="recruiter-pill">Infrastructure</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         CITIZEN & FAMILY QUICK SERVICES (4-Box Service Grid)
+    ═══════════════════════════════════════════════════════════════ -->
+    <div class="psu-services-container">
+      <div class="psu-section-head">
+        <h2 class="section-title">Citizen &amp; Family Services (नागरिक एवं परिवार सेवाएं)</h2>
+        <p class="section-subtitle">Comprehensive vocational decision support for students and parents</p>
+      </div>
+
+      <div class="psu-services-grid">
+        <!-- Service 1 -->
+        <div class="service-tile" onclick="showSection('counsellor')">
+          <div class="tile-icon-box orange">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          </div>
+          <h3 class="tile-title">Family &amp; Learner Guidance</h3>
+          <p class="tile-desc">Balanced guidance addressing parent questions about job security, workplace safety, and respectable earnings.</p>
+          <div class="tile-link">
+            <span>Talk to Counsellor</span>
+            <span class="tile-arrow">&rarr;</span>
+          </div>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="service-tile" onclick="showSection('trades')">
+          <div class="tile-icon-box navy">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+          </div>
+          <h3 class="tile-title">NSQF Trades &amp; Salary Ladder</h3>
+          <p class="tile-desc">Compare entry-level, 3-5 year experienced, and top-tier career earnings across ITI trades with placement verified by DGT.</p>
+          <div class="tile-link">
+            <span>Explore 8+ Verified Trades</span>
+            <span class="tile-arrow">&rarr;</span>
+          </div>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="service-tile" onclick="showSection('trades')">
+          <div class="tile-icon-box green">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+          </div>
+          <h3 class="tile-title">Government Schemes &amp; Subsidies</h3>
+          <p class="tile-desc">Check eligibility for PMKVY, NAPS stipend support, Jan Shikshan Sansthan, and free hostel/toolkit allowances for learners.</p>
+          <div class="tile-link">
+            <span>View Scheme Benefits</span>
+            <span class="tile-arrow">&rarr;</span>
+          </div>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="service-tile" onclick="showEscalation()">
+          <div class="tile-icon-box red">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          </div>
+          <h3 class="tile-title">Certified Counsellor Call / IVR</h3>
+          <p class="tile-desc">Request a callback from a human vocational counsellor or engage via WhatsApp voice messages in regional languages.</p>
+          <div class="tile-link">
+            <span>Request Call Support</span>
+            <span class="tile-arrow">&rarr;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         FEATURES & VALUE PILLARS
+    ═══════════════════════════════════════════════════════════════ -->
+    <div class="features-section">
+      <div class="section-header">
+        <h2 class="section-title" id="features-title">Why VocGuide? (वोकगाइड की विशेषताएं)</h2>
+        <p class="section-subtitle" id="features-subtitle">Built specifically for Indian families, backed by industry and government data</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card" onclick="showSection('counsellor')">
+          <div class="feature-icon orange">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+          </div>
+          <h3 class="feature-title" id="feat-1-title">Family Career Guidance</h3>
+          <p class="feature-desc" id="feat-1-desc">Direct, respectful guidance addressing questions about salary, workplace safety, and career advancement.</p>
+          <div class="feature-arrow">&rarr;</div>
+        </div>
+        <div class="feature-card" onclick="showSection('trades')">
+          <div class="feature-icon navy">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+          </div>
+          <h3 class="feature-title" id="feat-2-title">Verified Outcome Data</h3>
+          <p class="feature-desc" id="feat-2-desc">Real placement rates, salary ranges, and career growth paths for every trade, based on verified industry data.</p>
+          <div class="feature-arrow">&rarr;</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon green">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+          </div>
+          <h3 class="feature-title" id="feat-3-title">Hindi + English (द्विभाषी)</h3>
+          <p class="feature-desc" id="feat-3-desc">Full bilingual support. Parents and students can converse comfortably in their preferred language by voice or text.</p>
+          <div class="feature-arrow">&rarr;</div>
+        </div>
+        <div class="feature-card" onclick="showEscalation()">
+          <div class="feature-icon red">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          </div>
+          <h3 class="feature-title" id="feat-4-title">Advisor Support</h3>
+          <p class="feature-desc" id="feat-4-desc">Connect directly with an experienced vocational advisor whenever you need personalized advice.</p>
+          <div class="feature-arrow">&rarr;</div>
+        </div>
+        <div class="feature-card" onclick="showSection('admin')">
+          <div class="feature-icon blue">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+          </div>
+          <h3 class="feature-title" id="feat-5-title">Admin Dashboard</h3>
+          <p class="feature-desc" id="feat-5-desc">Scheme administrators see engagement trends, sentiment shifts, and where parental resistance is concentrated.</p>
+          <div class="feature-arrow">&rarr;</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon purple">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+          </div>
+          <h3 class="feature-title" id="feat-6-title">Voice &amp; Audio Friendly</h3>
+          <p class="feature-desc" id="feat-6-desc">Easy voice messaging and clear cards for parents who prefer speaking over typing.</p>
+          <div class="feature-arrow">&rarr;</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         HOW IT WORKS
+    ═══════════════════════════════════════════════════════════════ -->
+    <div class="how-section">
+      <div class="section-header">
+        <h2 class="section-title">How It Works (कार्यप्रणाली)</h2>
+        <p class="section-subtitle">Three simple steps to make an informed career decision together</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <h3>Family Sits Together</h3>
+          <p>Open VocGuide together: learner, parents, and guardians in a single joint session.</p>
+        </div>
+        <div class="step-arrow">&rarr;</div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <h3>Ask Any Question</h3>
+          <p>Ask in Hindi or English by voice or text about earnings, safety, dignity, or career growth.</p>
+        </div>
+        <div class="step-arrow">&rarr;</div>
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <h3>Get Verified Answers</h3>
+          <p>Get clear, verified answers based on official NSQF standards, training timelines, and real salaries.</p>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       6. TRADES EXPLORER SECTION (Clean Responsive Card Grid)
+  ═══════════════════════════════════════════════════════════════ -->
+  <section id="trades" class="section">
+    <div class="psu-page-header">
+      <div class="psu-page-header-inner">
+        <div class="page-title-box">
+          <span class="psu-breadcrumb">Home / Trades Explorer / व्यावसायिक ट्रेड सूची</span>
+          <h1 class="page-title" id="trades-title">Explore Vocational &amp; NSQF Trades</h1>
+          <p class="page-subtitle" id="trades-subtitle">Verified earnings, placement rates, safety ratings, and career ladders for every ITI trade</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="trades-container">
+      <div class="filters-bar">
+        <div class="search-box">
+          <span class="search-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></span>
+          <input type="text" id="trade-search" placeholder="Search trades (e.g., Electrician, Fitter, Solar)..." oninput="filterTrades()">
+        </div>
+        <div class="filter-chips">
+          <button class="chip active" onclick="filterBySector('all', this)">All Sectors</button>
+          <button class="chip" onclick="filterBySector('construction', this)">Construction &amp; Electrical</button>
+          <button class="chip" onclick="filterBySector('it', this)">IT &amp; Electronics</button>
+          <button class="chip" onclick="filterBySector('healthcare', this)">Healthcare</button>
+          <button class="chip" onclick="filterBySector('beauty', this)">Apparel &amp; Design</button>
+          <button class="chip" onclick="filterBySector('automotive', this)">Automotive &amp; Mech</button>
+        </div>
+        <div class="sort-box">
+          <select id="trade-sort" onchange="sortTrades()" class="sort-select">
+            <option value="placement">Sort: Placement Rate (Highest)</option>
+            <option value="salary">Sort: Average Salary</option>
+            <option value="growth">Sort: Job Growth Rate</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="trades-grid" id="trades-grid">
+        <div class="loading-spinner">
+          <div class="spinner"></div>
+          <span>Loading verified trades data...</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRADE DETAIL MODAL -->
+  <div class="modal-overlay" id="trade-modal" style="display:none" onclick="closeTradeModal(event)">
+    <div class="modal-content" id="trade-modal-content"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       7. AI COUNSELLOR SECTION (VocGuide Sahayak e-Pamarsh)
+  ═══════════════════════════════════════════════════════════════ -->
+  <section id="counsellor" class="section">
+    <div class="guidance-top-header">
+      <div class="gth-inner">
+        <div class="gth-title-wrap">
+          <h1 class="gth-title">Vocational Career Guidance <span class="gth-hi">करियर परामर्श</span></h1>
+          <p class="gth-subtitle">Personalised advice on ITI trades, starting salaries, workplace safety, and career growth for learners and parents.</p>
+        </div>
+        <div class="gth-tags">
+          <span class="gth-tag">NSQF Aligned</span>
+          <span class="gth-tag">Voice &amp; Chat</span>
+          <span class="gth-tag">Hindi &amp; English</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="counsellor-layout">
+      <!-- Left Panel: Profile & Setup -->
+      <aside class="context-panel" id="context-panel">
+        <div class="cp-header">
+          <div>
+            <h2 id="cp-title">Learner Profile</h2>
+            <p id="cp-subtitle">Optional details for tailored guidance</p>
+          </div>
+        </div>
+        <div class="cp-form">
+          <div class="cp-field">
+            <label id="cp-name-label">Learner's Name</label>
+            <input type="text" id="learner-name" placeholder="e.g. Rahul / Priya">
+          </div>
+          <div class="cp-field">
+            <label id="cp-loc-label">Location (District / State)</label>
+            <input type="text" id="learner-location" placeholder="e.g. Gorakhpur, UP">
+          </div>
+          <div class="cp-field">
+            <label id="cp-edu-label">Education Level</label>
+            <select id="learner-education">
+              <option value="">Select Education...</option>
+              <option value="Class 8 pass">Class 8 Pass</option>
+              <option value="Class 10 pass">Class 10 Pass</option>
+              <option value="Class 12 pass">Class 12 Pass</option>
+              <option value="Dropout">School Dropout</option>
+            </select>
+          </div>
+          <div class="cp-field">
+            <label id="cp-income-label">Family Monthly Income</label>
+            <select id="family-income">
+              <option value="">Select Monthly Income...</option>
+              <option value="Below Rs 10,000">Below &#8377;10,000</option>
+              <option value="Rs 10,000-25,000">&#8377;10,000 to &#8377;25,000</option>
+              <option value="Rs 25,000-50,000">&#8377;25,000 to &#8377;50,000</option>
+              <option value="Above Rs 50,000">Above &#8377;50,000</option>
+            </select>
+          </div>
+          <div class="cp-field">
+            <label id="cp-trade-label">Trade of Interest</label>
+            <select id="trade-interest">
+              <option value="">Any / Not Sure Yet</option>
+            </select>
+          </div>
+          <div class="cp-field">
+            <label id="cp-concern-label">Main Parent Concern</label>
+            <select id="parent-concern">
+              <option value="">Select Parent Concern...</option>
+              <option value="income">Income &amp; Stipend Potential</option>
+              <option value="safety">Workplace Safety &amp; Medical Health</option>
+              <option value="social_status">Social Status &amp; Dignity of Labor</option>
+              <option value="career_growth">Career Growth to Diploma / Degree</option>
+              <option value="female_safety">Safe Environment for Daughters</option>
+              <option value="general">General Guidance</option>
+            </select>
+          </div>
+          <div class="cp-lang-toggle">
+            <label id="cp-lang-label">Input Language</label>
+            <div class="lang-toggle">
+              <button class="lt-btn active" id="lt-en" onclick="setChatLang('en')">English</button>
+              <button class="lt-btn" id="lt-hi" onclick="setChatLang('hi')">&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</button>
+            </div>
+          </div>
+          <button class="btn-psu-primary full-width" id="start-session-btn" onclick="startSession()">
+            <span id="start-session-text">Start Guidance</span>
+          </button>
+        </div>
+
+        <div class="quick-questions" id="quick-questions">
+          <div class="qq-title" id="qq-title">Suggested Questions</div>
+          <div class="qq-chips" id="qq-chips"></div>
+        </div>
+      </aside>
+
+      <!-- Right Panel: Chat Stream -->
+      <main class="chat-panel">
+        <div class="chat-header">
+          <div class="chat-ai-avatar">
+            <div class="avatar-ring"></div>
+            <div class="avatar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+            <div class="avatar-status online" id="ai-status-dot"></div>
+          </div>
+          <div class="chat-ai-info">
+            <div class="chat-ai-name">
+              <span>VocGuide Advisor</span>
+              <span class="rag-live-badge">Online</span>
+            </div>
+            <div class="chat-meta-row">
+              <span class="chat-ai-status" id="ai-status-text">Bilingual Career Guide</span>
+              <span class="chat-meta-sep">&bull;</span>
+              <div class="sentiment-bar-inline" id="sentiment-bar">
+                <span class="sentiment-label" id="sentiment-label" style="display:none"></span>
+                <span class="sentiment-badge neutral" id="sentiment-badge">Neutral</span>
+              </div>
+            </div>
+          </div>
+          <div class="chat-actions">
+            <div class="chat-output-lang-toggle" id="chat-output-lang-toggle" title="Switch Reply Language">
+              <span class="colt-label">Reply:</span>
+              <button type="button" class="colt-btn active" id="colt-en" onclick="setChatLang('en')">EN</button>
+              <button type="button" class="colt-btn" id="colt-hi" onclick="setChatLang('hi')">&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</button>
+            </div>
+            <button class="chat-action-btn" onclick="translateLastMessage()" title="Translate last response">Translate</button>
+            <button class="chat-action-btn" onclick="showEscalation()" title="Request Free Callback">Talk to Advisor</button>
+            <button class="chat-action-btn" onclick="clearChat()" title="Start New Session">Reset</button>
+          </div>
+        </div>
+
+        <div class="chat-messages" id="chat-messages">
+          <div class="chat-message ai-message" id="welcome-message">
+            <div class="msg-avatar"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+            <div class="msg-content">
+              <div class="msg-bubble">
+                <p id="welcome-text"><strong>Namaste! Welcome to VocGuide.</strong></p>
+                <p id="welcome-text-2">I am here to guide you and your family about ITI courses, jobs, and career options.</p>
+                <p>Feel free to ask me anything about:</p>
+                <ul id="welcome-list">
+                  <li onclick="sendQuickQuestion(this.textContent.trim())" title="Click to ask about this">Starting salaries and 5-year earning potential</li>
+                  <li onclick="sendQuickQuestion(this.textContent.trim())" title="Click to ask about this">Workplace safety standards and medical protections</li>
+                  <li onclick="sendQuickQuestion(this.textContent.trim())" title="Click to ask about this">NSQF progression from Certificate to Diploma &amp; B.Tech</li>
+                  <li onclick="sendQuickQuestion(this.textContent.trim())" title="Click to ask about this">Government scholarships, PMKVY, and NAPS stipends</li>
+                  <li onclick="sendQuickQuestion(this.textContent.trim())" title="Click to ask about this">Top recruiting industries, manufacturing, and tech employers</li>
+                </ul>
+                <p id="welcome-text-3"><em>You can type or send a voice message in Hindi or English!</em></p>
+              </div>
+              <div class="msg-time">Just now</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="typing-indicator" id="typing-indicator">
+          <div class="msg-avatar"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+          <div class="typing-bubble">
+            <div class="typing-dots">
+              <span></span><span></span><span></span>
+            </div>
+          </div>
+          <span class="typing-text" id="typing-text">VocGuide is preparing your answer...</span>
+        </div>
+
+        <div class="chat-input-area">
+          <!-- Voice recording indicator -->
+          <div id="voice-recording-bar" style="display:none;align-items:center;gap:10px;padding:8px 12px;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.25);border-radius:10px;margin-bottom:8px">
+            <span style="width:10px;height:10px;border-radius:50%;background:#ef4444;animation:pulse 1s infinite"></span>
+            <span style="font-size:13px;color:#dc2626;font-weight:600">Recording voice message...</span>
+            <button onclick="toggleVoiceMessage()" style="margin-left:auto;padding:4px 12px;background:#ef4444;border:none;border-radius:6px;color:#ffffff;cursor:pointer;font-size:12px;font-weight:600">Stop &amp; Send</button>
+          </div>
+
+          <div class="chat-input-box">
+            <textarea
+              id="chat-input"
+              placeholder="Ask anything about vocational trades... (in English or Hindi / बोलकर पूछें)"
+              rows="1"
+              onkeydown="handleChatKey(event)"
+              oninput="autoResize(this)"
+            ></textarea>
+            <div class="input-actions">
+              <button class="input-action" id="vm-btn" onclick="toggleVoiceMessage()" title="Send voice message"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg></button>
+              <button class="input-action" id="voice-btn" onclick="startVoice()" title="Speech-to-text"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path></svg></button>
+              <button class="send-btn" id="send-btn" onclick="sendMessage()" title="Send message">
+                <span id="send-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg></span>
+              </button>
+            </div>
+          </div>
+          <div class="input-hint" id="input-hint">Press Enter to send &bull; Shift+Enter for new line</div>
+        </div>
+
+      </main>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       8. ADMIN DASHBOARD SECTION (Clean PSU Reporting Dashboard)
+  ═══════════════════════════════════════════════════════════════ -->
+  <section id="admin" class="section">
+
+    <!-- 8A. SECURE ADMINISTRATOR ACCESS GATE (Shown when not authenticated as admin) -->
+    <div id="admin-gate-screen" class="admin-gate-screen">
+      <div class="admin-gate-card">
+        <div class="admin-gate-badge">
+          <span>ADMINISTRATOR ACCESS GATE</span>
+        </div>
+        <h2 class="admin-gate-title">VocGuide Control &amp; Analytics Portal</h2>
+        <p class="admin-gate-desc">
+          Restricted skilling administration area. Authorized personnel only. Please verify your administrator credentials to proceed.
+        </p>
+
+        <div id="admin-gate-error" class="admin-gate-alert" style="display:none"></div>
+
+        <div class="admin-gate-form">
+          <div class="form-group">
+            <label for="admin-gate-username">Administrator Username</label>
+            <input type="text" id="admin-gate-username" class="form-input" placeholder="Enter admin username" autocomplete="username">
+          </div>
+          <div class="form-group">
+            <label for="admin-gate-password">Administrator Password</label>
+            <input type="password" id="admin-gate-password" class="form-input" placeholder="Enter password" autocomplete="current-password" onkeydown="if(event.key==='Enter')doAdminGateLogin()">
+          </div>
+          <button class="btn-psu-primary full-width" onclick="doAdminGateLogin()" id="admin-gate-btn">
+            <span>Authenticate &amp; Access Dashboard</span>
+          </button>
+        </div>
+
+        <div class="admin-gate-footer">
+          <button class="btn-link" onclick="showSection('home')">
+            &larr; Return to Learner &amp; Family Portal
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8B. AUTHENTICATED ADMINISTRATOR DASHBOARD -->
+    <div id="admin-content-screen" class="admin-content-screen" style="display:none">
+      <div class="psu-page-header">
+        <div class="psu-page-header-inner">
+          <div class="page-title-box">
+            <span class="psu-breadcrumb">Home / Administration / प्रशासनिक नियंत्रण कक्ष</span>
+            <h1 class="page-title">VocGuide Scheme &amp; Platform Administration</h1>
+            <p class="page-subtitle">Real-time skilling analytics, NSQF trade catalogue management, user directory, and parental resistance monitoring</p>
+          </div>
+          <div class="admin-user-pill">
+            <div class="admin-user-info">
+              <div>
+                <span class="admin-user-name" id="admin-logged-name">Administrator</span>
+                <span class="admin-user-role">Platform Super Admin</span>
+              </div>
+            </div>
+            <button class="btn-admin-logout" onclick="doAdminLogout()" title="Logout from Admin">
+              <span>Sign Out</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="admin-layout">
+        <div class="admin-sidebar">
+          <div class="admin-brand">
+            <div>
+              <div class="admin-title">VocGuide Admin</div>
+              <div class="admin-subtitle">SIH 2026 Control Center</div>
+            </div>
+          </div>
+          <nav class="admin-nav">
+            <button class="admin-nav-item active" onclick="showAdminTab('overview', this)">
+              Overview
+            </button>
+            <button class="admin-nav-item" onclick="showAdminTab('trades-mgmt', this)">
+              Manage Trades
+            </button>
+            <button class="admin-nav-item" onclick="showAdminTab('users-mgmt', this)">
+              Manage Users
+            </button>
+            <button class="admin-nav-item" onclick="showAdminTab('sessions', this)">
+              Live Sessions
+            </button>
+            <button class="admin-nav-item" onclick="showAdminTab('resistance', this)">
+              Resistance Map
+            </button>
+            <button class="admin-nav-item" onclick="showAdminTab('escalations', this)">
+              Escalation Tickets
+            </button>
+          </nav>
+          <button class="admin-refresh-btn" onclick="loadAdminData()">
+            Refresh Analytics
+          </button>
+        </div>
+
+        <div class="admin-main">
+          <!-- Overview Tab -->
+          <div class="admin-tab active" id="tab-overview">
+            <div class="admin-tab-header">
+              <h2>Scheme Key Performance Indicators</h2>
+              <div class="admin-status-row">
+                <div class="status-dot online"></div>
+                <span id="admin-ai-status">Counsellor Service: Online</span>
+                <span class="admin-timestamp" id="admin-refresh-time">Last updated: Just now</span>
+              </div>
+            </div>
+            <div class="kpi-grid">
+              <div class="kpi-card">
+                <div class="kpi-value" id="kpi-sessions">--</div>
+                <div class="kpi-label">Total Sessions</div>
+                <div class="kpi-trend positive">Active Learners</div>
+              </div>
+              <div class="kpi-card">
+                <div class="kpi-value" id="kpi-messages">--</div>
+                <div class="kpi-label">Total Messages</div>
+                <div class="kpi-trend positive">Avg <span id="kpi-avg">--</span>/session</div>
+              </div>
+              <div class="kpi-card">
+                <div class="kpi-value" id="kpi-escalations">--</div>
+                <div class="kpi-label">Escalation Requests</div>
+                <div class="kpi-trend" id="kpi-esc-pending">-- pending</div>
+              </div>
+              <div class="kpi-card">
+                <div class="kpi-value" id="kpi-concerned">--%</div>
+                <div class="kpi-label">Concerned Sentiment</div>
+                <div class="kpi-trend neutral">Resolved via AI</div>
+              </div>
+            </div>
+
+            <div class="charts-row">
+              <div class="chart-card wide">
+                <div class="chart-header">
+                  <h3>Session Inflow Trend (Last 7 Days)</h3>
+                </div>
+                <div class="chart-area" id="trend-chart"></div>
+              </div>
+              <div class="chart-card">
+                <div class="chart-header">
+                  <h3>Family Sentiment Distribution</h3>
+                </div>
+                <div class="chart-area">
+                  <canvas id="sentiment-chart" width="200" height="200"></canvas>
+                  <div class="chart-legend" id="sentiment-legend"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="charts-row">
+              <div class="chart-card">
+                <div class="chart-header">
+                  <h3>Parent Concern Topics</h3>
+                  <span class="chart-subtitle">Primary topics of family hesitation</span>
+                </div>
+                <div id="concern-bars"></div>
+              </div>
+              <div class="chart-card">
+                <div class="chart-header">
+                  <h3>Trade Interest Distribution</h3>
+                </div>
+                <div id="trade-bars"></div>
+              </div>
+              <div class="chart-card">
+                <div class="chart-header">
+                  <h3>Language Demographics</h3>
+                </div>
+                <div id="lang-bars"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Trade Management Tab (Admin CRUD) -->
+          <div class="admin-tab" id="tab-trades-mgmt">
+            <div class="admin-tab-header">
+              <div>
+                <h2>NSQF Vocational Trade Management</h2>
+                <p class="admin-tab-desc">Add, edit, or remove vocational trades offered across the portal</p>
+              </div>
+              <button class="btn-psu-primary" onclick="openTradeEditorModal()">
+                <span>Add New Trade</span>
+              </button>
+            </div>
+
+            <div class="admin-action-bar">
+              <div class="search-input-wrap">
+                <span class="search-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></span>
+                <input type="text" id="admin-trade-search" class="form-input" placeholder="Search trades by name or sector..." oninput="filterAdminTrades()">
+              </div>
+              <select id="admin-trade-sector-filter" class="form-select" onchange="filterAdminTrades()">
+                <option value="all">All Sectors</option>
+              </select>
+            </div>
+
+            <div id="admin-trades-container" class="admin-trades-grid">
+              <div class="loading-spinner"><div class="spinner"></div><span>Loading trade catalogue...</span></div>
+            </div>
+          </div>
+
+          <!-- User Management Tab (Admin User Directory) -->
+          <div class="admin-tab" id="tab-users-mgmt">
+            <div class="admin-tab-header">
+              <div>
+                <h2>Platform User &amp; Role Administration</h2>
+                <p class="admin-tab-desc">Monitor accounts, switch user privileges, toggle active status, and maintain platform security</p>
+              </div>
+              <button class="btn-psu-primary" onclick="openUserCreatorModal()">
+                <span>Create User Account</span>
+              </button>
+            </div>
+
+            <div class="sessions-table-wrap">
+              <table class="sessions-table" id="admin-users-table">
+                <thead>
+                  <tr>
+                    <th>User</th>
+                    <th>Role</th>
+                    <th>Contact</th>
+                    <th>Status</th>
+                    <th>Registered</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-users-tbody">
+                  <tr><td colspan="6" class="table-loading">Loading users...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Sessions Tab -->
+          <div class="admin-tab" id="tab-sessions">
+            <div class="admin-tab-header"><h2>Live Session Monitor</h2></div>
+            <div class="sessions-table-wrap">
+              <table class="sessions-table" id="sessions-table">
+                <thead>
+                  <tr>
+                    <th>Session ID</th><th>Trade</th><th>Location</th>
+                    <th>Messages</th><th>Language</th><th>Last Sentiment</th>
+                    <th>Concerns</th><th>Time</th>
+                  </tr>
+                </thead>
+                <tbody id="sessions-tbody">
+                  <tr><td colspan="8" class="table-loading">Loading sessions...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Resistance Map Tab -->
+          <div class="admin-tab" id="tab-resistance">
+            <div class="admin-tab-header">
+              <h2>Parental Resistance Concentration Map</h2>
+              <p class="admin-tab-desc">Geographic breakdown of why families hesitate about vocational pathways</p>
+            </div>
+            <div id="resistance-content">
+              <div class="resistance-legend">
+                <span class="rl-item income">Income Concerns</span>
+                <span class="rl-item safety">Safety Worries</span>
+                <span class="rl-item status">Social Status Hesitation</span>
+                <span class="rl-item growth">Career Growth Uncertainty</span>
+              </div>
+              <div id="resistance-grid">
+                <div class="loading-spinner"><div class="spinner"></div><span>Loading resistance hotspots...</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Escalations Tab -->
+          <div class="admin-tab" id="tab-escalations">
+            <div class="admin-tab-header"><h2>Escalation &amp; Callback Requests</h2></div>
+            <div id="escalations-list">
+              <div class="loading-spinner"><div class="spinner"></div><span>Loading escalation tickets...</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trade Editor Modal -->
+  <div class="modal-overlay" id="modal-trade-editor" style="display:none" onclick="if(event.target===this)closeTradeModalEditor()">
+    <div class="modal-box admin-modal-box">
+      <div class="modal-header">
+        <h3 id="trade-modal-title">Add New NSQF Trade</h3>
+        <button class="modal-close" onclick="closeTradeModalEditor()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+      </div>
+      <div class="modal-body modal-scrollable">
+        <form id="trade-editor-form" onsubmit="event.preventDefault(); saveTrade();">
+          <input type="hidden" id="tf-is-edit" value="0">
+          <div class="form-row-2">
+            <div class="form-group">
+              <label>Trade ID (Code) *</label>
+              <input type="text" id="tf-id" class="form-input" placeholder="e.g. solar_tech" required>
+              <small class="form-hint">Unique lowercase code (letters, numbers, underscore)</small>
+            </div>
+            <div class="form-group">
+              <label>Trade Sector</label>
+              <input type="text" id="tf-icon" class="form-input" placeholder="e.g. Technical" value="Technical">
+            </div>
+          </div>
+          <div class="form-row-2">
+            <div class="form-group">
+              <label>Trade Name (English) *</label>
+              <input type="text" id="tf-name" class="form-input" placeholder="e.g. Solar Panel Technician" required>
+            </div>
+            <div class="form-group">
+              <label>Trade Name (Hindi) *</label>
+              <input type="text" id="tf-name-hi" class="form-input" placeholder="e.g. सोलर पैनल तकनीशियन" required>
+            </div>
+          </div>
+          <div class="form-row-2">
+            <div class="form-group">
+              <label>Sector (English) *</label>
+              <input type="text" id="tf-sector" class="form-input" placeholder="e.g. Renewable Energy" required>
+            </div>
+            <div class="form-group">
+              <label>Sector (Hindi)</label>
+              <input type="text" id="tf-sector-hi" class="form-input" placeholder="e.g. नवीकरणीय ऊर्जा">
+            </div>
+          </div>
+          <div class="form-row-3">
+            <div class="form-group">
+              <label>NSQF Level</label>
+              <select id="tf-nsqf" class="form-select">
+                <option value="3">NSQF Level 3</option>
+                <option value="4" selected>NSQF Level 4</option>
+                <option value="5">NSQF Level 5</option>
+                <option value="6">NSQF Level 6</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Duration (Months)</label>
+              <input type="number" id="tf-duration" class="form-input" value="12" min="1" max="48" required>
+            </div>
+            <div class="form-group">
+              <label>Placement Rate (%)</label>
+              <input type="number" id="tf-placement" class="form-input" value="88" min="10" max="100" required>
+            </div>
+          </div>
+          <div class="form-row-3">
+            <div class="form-group">
+              <label>Avg Starting Salary (&#8377;/mo)</label>
+              <input type="number" id="tf-salary-start" class="form-input" value="14000" min="5000" required>
+            </div>
+            <div class="form-group">
+              <label>Avg Experienced (&#8377;/mo)</label>
+              <input type="number" id="tf-salary-exp" class="form-input" value="28000" min="8000" required>
+            </div>
+            <div class="form-group">
+              <label>Top Earners (&#8377;/mo)</label>
+              <input type="number" id="tf-salary-top" class="form-input" value="60000" min="15000" required>
+            </div>
+          </div>
+          <div class="form-row-2">
+            <div class="form-group">
+              <label>Self Employment Potential</label>
+              <select id="tf-self-emp" class="form-select">
+                <option value="Very High">Very High (बहुत उच्च)</option>
+                <option value="High" selected>High (उच्च)</option>
+                <option value="Medium">Medium (मध्यम)</option>
+                <option value="Low">Low (सीमित)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Workplace Safety Level</label>
+              <select id="tf-safety" class="form-select">
+                <option value="Low" selected>Low Risk (Modern PPE Standards)</option>
+                <option value="Moderate">Moderate Risk (Certified Workshop)</option>
+                <option value="High">Standard Industrial Protocol</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Trade Description / Overview</label>
+            <textarea id="tf-desc" class="form-input" rows="2" placeholder="Brief description of skills acquired and daily responsibilities..."></textarea>
+          </div>
+          <div class="form-group">
+            <label>Top Hiring Companies (comma separated)</label>
+            <input type="text" id="tf-employers" class="form-input" placeholder="e.g. Tata Power, Adani Solar, NTPC, State Discoms">
+          </div>
+          <div class="modal-footer-actions">
+            <button type="button" class="btn-psu-outline" onclick="closeTradeModalEditor()">Cancel</button>
+            <button type="submit" class="btn-psu-primary" id="btn-save-trade">Save Trade</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- User Creator Modal -->
+  <div class="modal-overlay" id="modal-user-creator" style="display:none" onclick="if(event.target===this)closeUserCreatorModal()">
+    <div class="modal-box auth-modal-box">
+      <div class="modal-header">
+        <h3>Create User Account</h3>
+        <button class="modal-close" onclick="closeUserCreatorModal()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+      </div>
+      <div class="modal-body">
+        <form id="user-creator-form" onsubmit="event.preventDefault(); saveNewUser();">
+          <div class="form-group">
+            <label>Full Name *</label>
+            <input type="text" id="uf-fullname" class="form-input" placeholder="e.g. Rajesh Sharma" required>
+          </div>
+          <div class="form-group">
+            <label>Username *</label>
+            <input type="text" id="uf-username" class="form-input" placeholder="e.g. rajesh_sharma" required>
+          </div>
+          <div class="form-group">
+            <label>Password *</label>
+            <input type="password" id="uf-password" class="form-input" placeholder="Minimum 6 characters" required>
+          </div>
+          <div class="form-group">
+            <label>Mobile Number</label>
+            <input type="tel" id="uf-phone" class="form-input" placeholder="10-digit mobile number">
+          </div>
+          <div class="form-group">
+            <label>Assigned Role *</label>
+            <select id="uf-role" class="form-select">
+              <option value="user" selected>Learner / Parent (Regular User)</option>
+              <option value="admin">Administrator (Full Control)</option>
+            </select>
+          </div>
+          <div class="modal-footer-actions">
+            <button type="button" class="btn-psu-outline" onclick="closeUserCreatorModal()">Cancel</button>
+            <button type="submit" class="btn-psu-primary" id="btn-save-user">Create User</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       9. ESCALATION CALLBACK MODAL
+  ═══════════════════════════════════════════════════════════════ -->
+  <div class="modal-overlay" id="escalation-modal" style="display:none" onclick="closeEscalationModal(event)">
+    <div class="modal-box" id="escalation-box">
+      <div class="modal-header">
+        <h3><span id="esc-title">Request Human Counsellor Callback</span></h3>
+        <button class="modal-close" onclick="closeEscalation()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+      </div>
+      <div class="modal-body">
+        <p id="esc-desc">Our certified vocational counsellors are available to speak directly with you and your family. A counsellor will call you within 24 hours.</p>
+        <div class="esc-form">
+          <input type="text" id="esc-name" placeholder="Your / Parent's Name *" style="margin-bottom:12px">
+          <input type="tel" id="esc-phone" placeholder="Contact Mobile Number *">
+          <textarea id="esc-concern" placeholder="What specific question or doubt does your family have?" rows="3"></textarea>
+          <button class="btn-psu-primary full-width" onclick="submitEscalation()">
+            <span id="esc-submit-text">Submit Callback Request</span>
+          </button>
+        </div>
+        <div class="esc-info">
+          <div class="esc-info-item">National Toll Free: 1800-123-4567</div>
+          <div class="esc-info-item">Operating Hours: 9:00 AM to 6:00 PM (Monday to Saturday)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       10. AUTH MODAL (Sign In & Register)
+  ═══════════════════════════════════════════════════════════════ -->
+  <div class="modal-overlay" id="auth-modal" onclick="closeAuthModal(event)" style="display:none">
+    <div class="modal-box auth-modal-box">
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="tab-login" onclick="document.querySelectorAll('.auth-tab,.auth-panel').forEach(e=>e.classList.remove('active'));this.classList.add('active');document.getElementById('panel-login').classList.add('active')">Sign In</button>
+        <button class="auth-tab" id="tab-register" onclick="document.querySelectorAll('.auth-tab,.auth-panel').forEach(e=>e.classList.remove('active'));this.classList.add('active');document.getElementById('panel-register').classList.add('active')">Create Account</button>
+      </div>
+      <!-- Login Panel -->
+      <div class="auth-panel active" id="panel-login">
+        <h3>Welcome to VocGuide</h3>
+        <p style="color:var(--text-muted);font-size:13px;margin-bottom:16px">Sign in to save your family counselling sessions and track progress</p>
+        <input class="form-input" id="login-username" type="text" placeholder="Username" autocomplete="username">
+        <input class="form-input" id="login-password" type="password" placeholder="Password" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()">
+        <button class="btn-psu-primary" style="width:100%;margin-top:8px" onclick="doLogin()">Sign In</button>
+      </div>
+      <!-- Register Panel -->
+      <div class="auth-panel" id="panel-register">
+        <h3>Create New Account</h3>
+        <p style="color:var(--text-muted);font-size:13px;margin-bottom:16px">Register as a learner or parent to access personalised trade guidance</p>
+        <input class="form-input" id="reg-fullname" type="text" placeholder="Full Name">
+        <input class="form-input" id="reg-username" type="text" placeholder="Username *" autocomplete="username">
+        <input class="form-input" id="reg-password" type="password" placeholder="Password *" autocomplete="new-password">
+        <input class="form-input" id="reg-phone" type="tel" placeholder="Mobile Number">
+        <button class="btn-psu-primary" style="width:100%;margin-top:8px" onclick="doRegister()">Create Account</button>
+      </div>
+      <button class="modal-close-btn" onclick="closeAuthModal()" style="position:absolute;top:16px;right:16px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       11. MINIMAL PLATFORM FOOTER
+  ═══════════════════════════════════════════════════════════════ -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-row-main">
+        <div class="footer-brand-wrap">
+          <div class="footer-brand-title">VocGuide</div>
+          <p class="footer-brand-tagline">Vocational Career Guidance and Decision-Support Platform</p>
+        </div>
+        <nav class="footer-links">
+          <a href="#home" onclick="showSection('home')">Home</a>
+          <a href="#trades" onclick="showSection('trades')">Explore Trades</a>
+          <a href="#counsellor" onclick="showSection('counsellor')">Career Guidance</a>
+          <a href="#admin" onclick="showSection('admin')">Admin Portal</a>
+          <a href="javascript:void(0)" onclick="showEscalation()">Advisor Callback</a>
+        </nav>
+      </div>
+
+      <div class="footer-row-bottom">
+        <div class="footer-copy">&copy; 2026 VocGuide. All rights reserved.</div>
+        <div class="footer-helpline">Parent Helpline: <strong>1800-123-4567</strong> &bull; Free Guidance in Hindi &amp; English</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
