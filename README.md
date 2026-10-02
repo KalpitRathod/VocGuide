@@ -1,8 +1,57 @@
 # 🎓 VocGuide — AI Career Counselling & Family Decision-Support Platform
 
-**SIH 2026 | Problem Statement ID: 26241**
+**Smart India Hackathon 2026 | Problem Statement ID: 26241**
 
-An AI-enabled career counselling platform for vocational education in India, designed to engage **both learners AND their families** together, addressing parental concerns with verified data and regional language support.
+[![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
+[![Flask](https://img.shields.io/badge/Backend-Flask-lightgrey.svg)](https://flask.palletsprojects.com/)
+[![Local AI](https://img.shields.io/badge/Local%20AI-Ollama%20%7C%20Llama%203.1-orange.svg)](https://ollama.com/)
+[![Hackathon](https://img.shields.io/badge/SIH-2026-green.svg)](https://www.sih.gov.in/)
+
+An AI-enabled career counselling platform for vocational education in India, designed to engage **both learners AND their families** together, addressing parental concerns with verified data, NSQF progression pathways, and regional language support.
+
+---
+
+## 📸 Platform Screenshots
+
+### 1. 🏠 Homepage & Citizen Family Services
+> Intuitive, accessible landing page welcoming learners and parents with verified salary and placement highlights, dual-role guidance cards, and access to certified vocational advisors.
+
+![VocGuide Homepage](screencapture-localhost-5000-2026-10-02-02_23_22.png)
+
+---
+
+### 2. 🧭 Explore Verified NSQF Vocational Trades
+> Compare verified trade data across sectors, viewing realistic entry-level to top-tier earnings, placement rates, self-employment opportunities, and course durations.
+
+![Explore Vocational & NSQF Trades](screencapture-localhost-5000-2026-10-02-02_23_44.png)
+
+---
+
+### 3. 🤖 AI Family Counsellor (Bilingual Audio & Chat)
+> Joint family guidance session addressing parental hesitation, salary transparency, workplace safety, and government schemes in Hindi or English with real-time sentiment analysis and voice support.
+
+![AI Family Counsellor Chat & Guidance](screencapture-localhost-5000-2026-10-02-02_23_58.png)
+
+---
+
+### 4. 📊 Scheme Administration & Parental Resistance Analytics
+> Real-time monitoring console for scheme directors to track session inflow trends, sentiment breakdown, top parent concern topics (Income, Safety, Social Stigma), and escalation callbacks.
+
+![Admin & Scheme Analytics Dashboard](screencapture-localhost-5000-2026-10-02-02_24_37.png)
+
+---
+
+## 🏗️ System Architecture & Execution Flow
+
+### System Architecture
+The platform is built on an offline-first architecture connecting the dual-user guidance interface with local LLM reasoning (Llama 3.1 8B via Ollama), ChromaDB vector retrieval, and speech localization engines.
+
+![VocGuide System Architecture](presentation_assets/vocguide_system_architecture_dark.png)
+
+### End-to-End Program Flow
+Every user interaction passes through role classification (Learner vs. Parent), intent extraction, contextual grounding against verified trade benchmarks, and real-time resistance tracking.
+
+![VocGuide Code Flow Diagram](presentation_assets/vocguide_code_flow_diagram_dark.png)
 
 ---
 
@@ -36,15 +85,17 @@ http://localhost:5000
 
 ```
 SIHProject/
-├── app.py                  # Flask backend (API + AI integration)
+├── app.py                  # Flask backend (API + AI integration + SQLite)
 ├── requirements.txt        # Python dependencies
 ├── start.bat              # One-click startup script
+├── TTS_SETUP.md            # Neural TTS & Offline Whisper setup guide
 ├── data/
 │   └── trades.json        # Verified trade data (8 trades)
-└── static/
-    ├── index.html         # Main frontend (4 sections)
-    ├── style.css          # Premium dark theme CSS
-    └── app.js             # Frontend JavaScript + API calls
+├── static/
+│   ├── index.html         # Main frontend (4 sections)
+│   ├── style.css          # Premium responsive theme CSS
+│   └── app.js             # Frontend JavaScript + API calls
+└── presentation_assets/    # Architecture diagrams & presentation graphics
 ```
 
 ---
@@ -92,7 +143,7 @@ SIHProject/
 
 ### ♿ Accessibility Features
 - Large, readable font sizes
-- High contrast dark theme
+- High contrast clean theme
 - Voice input support (Web Speech API)
 - Simple UI with icons for low-literacy users
 - Mobile responsive design
@@ -136,7 +187,7 @@ SIHProject/
 
 ## 🛠️ Tech Stack
 
-- **Backend**: Python 3.14 + Flask + Flask-CORS
+- **Backend**: Python 3.10+ + Flask + Flask-CORS
 - **AI**: Ollama (mannix/llama3.1-8b-lexi for chat, translategemma for translation)
 - **Frontend**: Vanilla HTML5/CSS3/JavaScript (no framework)
 - **Fonts**: Inter + Noto Sans Devanagari (Google Fonts)
@@ -146,10 +197,10 @@ SIHProject/
 
 ## 🔒 Data Privacy
 
-- All sessions stored in-memory (not persisted to disk)
+- All sessions stored locally / in-memory
 - No personal data stored beyond the session
 - Escalation requests store only name and phone (as provided)
-- Ollama runs fully locally — no cloud API calls
+- Ollama runs fully locally — zero cloud data leakage
 
 ---
 
